@@ -17,25 +17,6 @@
 - **Charts**: [Recharts](https://recharts.org/)
 - **Icons**: [Lucide React](https://lucide.dev/)
 
-## Getting Started
-
-1.  **Install Dependencies**
-
-    ```bash
-    npm install
-    ```
-
-2.  **Run Locally**
-
-    ```bash
-    npm run dev
-    ```
-
-3.  **Build**
-    ```bash
-    npm run build
-    ```
-
 ## License
 
 MIT. Use responsibly. Don't blame us if you delete your server.
