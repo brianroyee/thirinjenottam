@@ -382,7 +382,7 @@ export const LORE: LoreItem[] = [
 export const SHOUTOUTS: Shoutout[] = [
   {
     role: "The Architect",
-    name: "Ashwin Rb",
+    name: "Ashwin P Shine",
     description: "Dreams in assembly. The walking ChatGPT.",
   },
   {

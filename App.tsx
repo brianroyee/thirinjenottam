@@ -50,49 +50,6 @@ import { LoreItem } from "./types";
 const App: React.FC = () => {
   const [selectedLore, setSelectedLore] = useState<LoreItem | null>(null);
 
-  // Countdown State
-  const [isReleased, setIsReleased] = useState(false);
-  const [timeLeft, setTimeLeft] = useState({
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
-  });
-
-  useEffect(() => {
-    // Target: 11:11 PM IST on Dec 26, 2025
-    const targetDate = new Date("2025-12-26T23:11:00+05:30").getTime();
-
-    const calculateTime = () => {
-      const now = new Date().getTime();
-      const difference = targetDate - now;
-
-      if (difference <= 0) {
-        setIsReleased(true);
-        return true; // Finished
-      }
-
-      const hours = Math.floor(
-        (difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      );
-      const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-      setTimeLeft({ hours, minutes, seconds });
-      return false;
-    };
-
-    // Initial check
-    if (calculateTime()) return;
-
-    const interval = setInterval(() => {
-      if (calculateTime()) {
-        clearInterval(interval);
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   const getStatusColor = (status: "lost" | "abandoned" | "myth") => {
     switch (status) {
       case "lost":
@@ -105,68 +62,6 @@ const App: React.FC = () => {
         return "bg-gray-500";
     }
   };
-
-  // 🔒 LOCKED STATE UI 🔒
-  if (!isReleased) {
-    return (
-      <div className="fixed inset-0 bg-[#050505] flex flex-col items-center justify-center text-white z-50 overflow-hidden font-sans">
-        {/* Background Grid - Matching Main Site */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent pointer-events-none" />
-
-        <div className="z-10 flex flex-col items-center p-8 md:p-12 border border-neutral-800 bg-neutral-900/80 backdrop-blur-xl rounded-3xl shadow-2xl relative max-w-lg w-full mx-4">
-          <div className="absolute -top-3 px-4 bg-[#050505] text-tech-orange font-mono text-xs tracking-widest uppercase border border-tech-orange/30 rounded-full py-1 animate-pulse shadow-[0_0_10px_rgba(255,87,34,0.2)]">
-            System Locked
-          </div>
-
-          <Lock className="w-12 h-12 text-neutral-600 mb-6" />
-
-          <h1 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tighter mb-2 text-center">
-            TECHIEPEDIA <span className="text-tech-orange">2025</span>
-          </h1>
-
-          <div className="text-center mb-8">
-            <p className="text-xs font-mono text-neutral-500 uppercase tracking-[0.3em]">
-              Release Protocol Initiating In
-            </p>
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-4 font-black font-mono text-5xl md:text-7xl tabular-nums tracking-tighter text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
-            <div className="flex flex-col items-center gap-2">
-              <span>{String(timeLeft.hours).padStart(2, "0")}</span>
-              <span className="text-[10px] md:text-xs font-sans font-normal text-neutral-600 uppercase tracking-widest">
-                Hrs
-              </span>
-            </div>
-            <span className="text-neutral-700 -mt-6">:</span>
-            <div className="flex flex-col items-center gap-2">
-              <span>{String(timeLeft.minutes).padStart(2, "0")}</span>
-              <span className="text-[10px] md:text-xs font-sans font-normal text-neutral-600 uppercase tracking-widest">
-                Mins
-              </span>
-            </div>
-            <span className="text-neutral-700 -mt-6">:</span>
-            <div className="flex flex-col items-center gap-2">
-              <span className="text-tech-orange">
-                {String(timeLeft.seconds).padStart(2, "0")}
-              </span>
-              <span className="text-[10px] md:text-xs font-sans font-normal text-tech-orange/50 uppercase tracking-widest">
-                Secs
-              </span>
-            </div>
-          </div>
-
-          <div className="mt-12 w-full h-1 bg-neutral-800 rounded-full overflow-hidden">
-            <div className="h-full bg-tech-orange w-1/3 animate-[shimmer_2s_infinite]"></div>
-          </div>
-
-          <p className="mt-6 text-[10px] font-mono text-neutral-600 uppercase tracking-widest text-center">
-            Restricted Access • Awaiting Launch
-          </p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="min-h-screen p-4 sm:p-6 lg:p-12 font-sans">

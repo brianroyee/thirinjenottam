@@ -14,7 +14,6 @@ import {
   Crown,
   MessageSquare,
   Zap,
-  Lock,
 } from "lucide-react";
 
 export {
