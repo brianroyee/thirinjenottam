@@ -43,7 +43,6 @@ import {
   Crown,
   MessageSquare,
   Zap,
-  Lock,
 } from "./components/Icons";
 import { LoreItem } from "./types";
 

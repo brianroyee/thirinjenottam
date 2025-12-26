@@ -32,5 +32,4 @@ export {
   Crown,
   MessageSquare,
   Zap,
-  Lock,
 };
