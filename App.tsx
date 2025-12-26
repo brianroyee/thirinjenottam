@@ -788,8 +788,8 @@ const App: React.FC = () => {
       <footer className="max-w-7xl mx-auto mt-12 mb-6 text-center text-neutral-600 text-xs font-mono uppercase tracking-widest">
         <p>Techiepedia © 2025 • End of Log</p>
         <p className="mt-2 opacity-60 text-[10px] normal-case tracking-normal">
-          This was generated using AI under strict supervision of Humans. <br />
-          <span className="text-red-500 font-bold">AI Slavery Wins!</span>
+          This was generated under strict supervision of Humans. <br />
+          <span className="text-red-500 font-bold">Vibe Coded with ❤️</span>
         </p>
       </footer>
     </div>
