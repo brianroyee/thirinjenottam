@@ -14,6 +14,7 @@ import {
   Crown,
   MessageSquare,
   Zap,
+  Lock,
 } from "lucide-react";
 
 export {
@@ -32,4 +33,5 @@ export {
   Crown,
   MessageSquare,
   Zap,
+  Lock,
 };
